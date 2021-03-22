@@ -9,8 +9,11 @@ let filteredMessage = message.replace(/\s/g, '') // remove space
 filteredMessage = filteredMessage.replace(/[^a-z]/gi, '') // only includes alphabet
 
 // GET TOTAL ROW MESSAGE FOR PADDING
-let totalRow = Math.ceil(filteredMessage.length / key.length) * key.length // get total row
-let rowLeft = totalRow - filteredMessage.length; // number of rows to pad
+let rowLeft = 0;
+let remainder = filteredMessage.length % key.length;
+if(remainder != 0){ rowLeft = key.length - remainder }
+// let totalRow = Math.ceil(filteredMessage.length / key.length) * key.length // get total row
+// let rowLeft = totalRow - filteredMessage.length; // number of rows to pad
 
 for (let a = 0; a < rowLeft; a++) {
   filteredMessage = filteredMessage.concat((a+10).toString(36)) // padding abcde...
